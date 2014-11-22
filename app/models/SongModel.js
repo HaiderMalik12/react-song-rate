@@ -4,7 +4,7 @@
   
   var statics = {
     subscribers: [],
-    counter: LSService.read() && LSService.read().length > 0 ? LSService.read().slice(-1).pop().id + 1 : 1,
+    counter: data && data.length > 0 ? data.slice(-1).pop().id + 1 : 1,
     query: function() {
       return _.map(data, function(song) {
         return new SongModel(song);

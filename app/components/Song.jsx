@@ -21,13 +21,6 @@
     },
     deleteSong: function() {
       this.props.data.delete();
-    },
-    getInitialState: function() {
-      return {
-        title: "",
-        artist: "",
-        score: 0
-      };
     }
   });
 }(React, module));

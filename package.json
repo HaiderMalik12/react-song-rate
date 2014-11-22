@@ -10,7 +10,6 @@
     "gulp-minify-css": "latest",
     "gulp-jshint": "latest",
     "gulp-browserify": "latest",
-    "gulp-rename": "latest",
     "gulp-util": "latest",
     "browser-sync": "latest",
     "del": "latest"

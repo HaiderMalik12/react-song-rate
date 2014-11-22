@@ -4,7 +4,6 @@
 	"dependencies": {
 		"react": "latest",
 		"bootstrap": "latest",
-		"jquery": "latest",
 		"lodash": "latest",
 		"underscore.string": "latest",
 		"font-awesome": "latest"

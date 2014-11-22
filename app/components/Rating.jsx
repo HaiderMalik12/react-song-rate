@@ -13,7 +13,7 @@
         hoverIndex: index
       }));
     },
-    leaveStar: function(index) {
+    leaveStar: function() {
       this.setState(_.extend(this.state, {
         hoverIndex: -1
       }));

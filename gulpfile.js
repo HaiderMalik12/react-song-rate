@@ -4,14 +4,11 @@ var gulp = require('gulp'),
     less = require('gulp-less'),
     cssmin = require('gulp-minify-css'),
     browserify = require('gulp-browserify'),
-    rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     jshint = require('gulp-jshint'),
     gutil = require('gulp-util'),
-    path = require('path'),
     browserSync = require('browser-sync'),
-    pkg = require('./package.json'),
     reload = browserSync.reload;
 
 /**

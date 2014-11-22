@@ -20,10 +20,6 @@
           <SongForm />
         </div>
       );
-    },
-    
-    getInitialState: function() {
-      return { songs: [] };
     }
   });
 }(React, module));

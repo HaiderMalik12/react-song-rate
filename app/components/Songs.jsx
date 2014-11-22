@@ -3,6 +3,7 @@
   
   module.exports = React.createClass({
     render: function() {
+      var stars = [];
       return (
         <table className="table table-striped table-condensed">
           <thead>
