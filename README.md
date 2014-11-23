@@ -1,6 +1,11 @@
 # React.js Song rating app
 This small web application demonstrates how you coulduse React.js for building applications. In this example I'm using JSX based components and Browserify to manage component dependencies.
 
+If you're interested in creating this by yourself, follow the tutorial:
+- [Writing apps with React.js: Build using gulp and Browserify](http://g00glen00b.be/reactjs-gulp-browserify/)
+- [Writing apps with React.js: Writing components using JSX](http://g00glen00b.be/reactjs-jsx/)
+- [Demo](http://song-rate-mvc.github.io/react-song-rate/)
+
 ## Installation
 Clone this repo and install all dependencies by using `bower install`. If you're not interested in Bower you can still manually install al libraries.
 
