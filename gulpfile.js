@@ -9,6 +9,7 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     browserSync = require('browser-sync'),
     source = require('vinyl-source-stream'),
+    buffer = require('vinyl-buffer'),
     reactify = require('reactify'),
     package = require('./package.json'),
     reload = browserSync.reload;
@@ -77,6 +78,7 @@ gulp.task('bower', function() {
   .transform(reactify)
   .bundle()
   .pipe(source(package.dest.app))
+  .pipe(buffer())
   .pipe(uglify())
   .pipe(gulp.dest(package.dest.dist));
 })
