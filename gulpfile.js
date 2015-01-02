@@ -3,12 +3,14 @@ var gulp = require('gulp'),
     run = require('gulp-run'),
     less = require('gulp-less'),
     cssmin = require('gulp-minify-css'),
-    browserify = require('gulp-browserify'),
+    browserify = require('browserify'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     jshint = require('gulp-jshint'),
-    gutil = require('gulp-util'),
     browserSync = require('browser-sync'),
+    source = require('vinyl-source-stream'),
+    reactify = require('reactify'),
+    package = require('./package.json'),
     reload = browserSync.reload;
 
 /**
@@ -40,47 +42,43 @@ gulp.task('bower', function() {
  * Less compilation
  */
 .task('less', function() {
-  return gulp.src('assets/less/*.less')
+  return gulp.src(package.paths.less)
   .pipe(less())
-  .pipe(concat('style.css'))
-  .pipe(gulp.dest('dist'));
+  .pipe(concat(package.dest.style))
+  .pipe(gulp.dest(package.dest.dist));
 })
 .task('less:min', function() {
-  return gulp.src('assets/less/*.less')
+  return gulp.src(package.paths.less)
   .pipe(less())
-  .pipe(concat('style.css'))
+  .pipe(concat(package.dest.style))
   .pipe(cssmin())
-  .pipe(gulp.dest('dist'));
+  .pipe(gulp.dest(package.dest.dist));
 })
 
 /**
  * JSLint/JSHint validation
  */
 .task('lint', function() {
-  return gulp.src('./app/*.js')
+  return gulp.src(package.paths.js)
   .pipe(jshint())
   .pipe(jshint.reporter('default'));
 })
 
 /** JavaScript compilation */
 .task('js', function() {
-  return gulp.src(['app/app.js'])
-  .pipe(browserify({
-    insertGlobals : true,
-    debug : !gulp.env.production
-  }))
-  .on('error', gutil.log)
-  .pipe(gulp.dest('dist'));
+  return browserify(package.paths.app)
+  .transform(reactify)
+  .bundle()
+  .pipe(source(package.dest.app))
+  .pipe(gulp.dest(package.dest.dist));
 })
 .task('js:min', function() {
-  return gulp.src(['app/app.js'])
-  .pipe(browserify({
-    insertGlobals : true,
-    debug : !gulp.env.production
-  }))
-  .on('error', gutil.log)
+  return browserify(package.paths.app)
+  .transform(reactify)
+  .bundle()
+  .pipe(source(package.dest.app))
   .pipe(uglify())
-  .pipe(gulp.dest('dist'));
+  .pipe(gulp.dest(package.dest.dist));
 })
 
 /**
@@ -88,14 +86,14 @@ gulp.task('bower', function() {
  */
 .task('serve', ['bower', 'clean', 'lint', 'less', 'js', 'server'], function() {
   return gulp.watch([
-    'app/**/*.js', 'app/**/*.jsx', '*.html', 'assets/**/*.less'
+    package.paths.js, package.paths.jsx, package.paths.html, package.paths.less
   ], [
    'lint', 'less', 'js', browserSync.reload
   ]);
 })
 .task('serve:minified', ['bower', 'clean', 'lint', 'less:min', 'js:min', 'server'], function() {
   return gulp.watch([
-    'app/**/*.js', 'app/**/*.jsx', '*.html', 'assets/**/*.less'
+    package.paths.js, package.paths.jsx, package.paths.html, package.paths.less
   ], [
    'lint', 'less:min', 'js:min', browserSync.reload
   ]);

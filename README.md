@@ -7,7 +7,21 @@ If you're interested in creating this by yourself, follow the tutorial:
 - [Demo](http://song-rate-mvc.github.io/react-song-rate/)
 
 ## Installation
-Clone this repo and install all dependencies by using `bower install`. If you're not interested in Bower you can still manually install al libraries.
+After cloning this repo, you will need to make sure that you installed **Gulp** by using NPM:
+````
+npm install -g gulp
+```
+
+After that's done, you can install the project dependencies using:
+````
+npm install
+bower install
+```
+
+Then you can run the project using:
+````
+gulp serve
+```
 
 ## Libraries
 
