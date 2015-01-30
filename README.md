@@ -6,10 +6,14 @@ If you're interested in creating this by yourself, follow the tutorial:
 - [Writing apps with React.js: Writing components using JSX](http://g00glen00b.be/reactjs-jsx/)
 - [Demo](http://song-rate-mvc.github.io/react-song-rate/)
 
+## Prerequisites
+You'll need to have **Node.js** installed.
+
 ## Installation
-After cloning this repo, you will need to make sure that you installed **Gulp** by using NPM:
+After cloning this repo, you will need to make sure that you installed **Gulp and Bower** by using NPM:
 ````
 npm install -g gulp
+npm install -g bower
 ```
 
 After that's done, you can install the project dependencies using:
