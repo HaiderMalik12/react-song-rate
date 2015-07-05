@@ -4,7 +4,7 @@
     isDisabled:  function() {
       return _.isBlank(this.state.artist) || _.isBlank(this.state.title);
     },
-    handleNewArtist: function() {
+    handleNewArtist: function(event) {
       this.setState(_.extend(this.state, {
         artist: event.target.value
       }));
