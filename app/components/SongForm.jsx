@@ -18,7 +18,7 @@
       var song = new Song(this.state);
       song.save();
       this.setState(this.getInitialState());
-      
+
       event.preventDefault();
       event.stopPropagation();
     },
